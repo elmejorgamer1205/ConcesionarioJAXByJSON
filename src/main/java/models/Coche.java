@@ -1,23 +1,33 @@
 package models;
 
 import exceptions.CocheException;
+import jakarta.xml.bind.annotation.*;
 
-import java.util.Collections;
 import java.util.List;
 
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Coche {
+    @XmlElement(name = "matricula-coche")
     private String matricula;
+    @XmlAttribute
+    private int id;
+    @XmlTransient
+    private static int idTotal = 1;
     private String marca;
     private String modelo;
-    private List extras;
-    StringBuilder letras = new StringBuilder();
-    StringBuilder numeros = new StringBuilder();
+    @XmlElementWrapper(name = "equipamiento")
+    @XmlElement(name = "extra")
+    private List<Equipamiento> extras;
 
-    public Coche(String matricula, String marca, String modelo, List extras) throws CocheException {
+    public Coche(String matricula, String marca, String modelo, List<Equipamiento> extras) throws CocheException {
         setMatricula(matricula);
         this.marca = marca;
         this.modelo = modelo;
         this.extras = extras;
+        this.id = idTotal++;
+    }
+
+    public Coche() {
     }
 
     public String getMatricula() {
@@ -25,6 +35,8 @@ public class Coche {
     }
 
     public void setMatricula(String matricula) throws CocheException {
+        StringBuilder letras = new StringBuilder();
+        StringBuilder numeros = new StringBuilder();
         for(char c : matricula.toCharArray())
             if(Character.isLetter(c)){
                 letras.append(c);
@@ -35,10 +47,8 @@ public class Coche {
         if(numeros.length() <= 4 && letras.length() <= 3){
             this.matricula = matricula;
         }else {
-            throw new CocheException("No puedes añadir una matricula que tenga más de 3 letras o 4 números");
+            throw new CocheException("No se puede añadir una matricula que tenga más de 3 letras o 4 números");
         }
-
-        this.matricula = matricula;
     }
 
     public String getMarca() {
@@ -57,13 +67,19 @@ public class Coche {
         this.modelo = modelo;
     }
 
-    public String getExtras() {
-        return extras.toString();
+    public List<Equipamiento> getExtras() {
+        return extras;
     }
 
-    public void setExtras(String extras) {
-        this.extras = Collections.singletonList(extras);
+    public void setExtras(List<Equipamiento> extras) {
+        this.extras = extras;
     }
 
+    public int getId() {
+        return id;
+    }
 
+    private void setId(int id) {
+        this.id = id;
+    }
 }
