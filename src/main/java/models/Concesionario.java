@@ -1,8 +1,5 @@
 package models;
-import jakarta.xml.bind.annotation.XmlAccessType;
-import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlElementWrapper;
-import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +10,8 @@ public class Concesionario {
 
     String nombre;
 
-    @XmlElementWrapper(name = "listado-coches>")
+    @XmlElementWrapper(name = "listado-coches")
+    @XmlElement(name = "coche")
     private List<Coche> listaCoches;
 
     public Concesionario() {
@@ -27,6 +25,7 @@ public class Concesionario {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
 
     public List<Coche> getListaCoches(){
         return listaCoches;
