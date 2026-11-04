@@ -9,13 +9,12 @@ public class PropertiesReader {
 
         Properties config = new Properties();
 
-        // El bloque try "intenta" ejecutar un código que podría fallar
-        try (FileInputStream fis = new FileInputStream("config.properties")) {
-            // Si encuentra el archivo, carga todas las rutas en nuestro objeto config
+        try (FileInputStream fis = new FileInputStream("src/config.properties")) {
             config.load(fis);
-        } catch (Exception e) {
-            // Si el archivo no existe o hay un error, el programa no se "rompe", sino que entra aquí
+        } catch (java.io.FileNotFoundException e) {
             System.err.println("Error al leer el archivo de configuración: " + e.getMessage());
+        } catch (java.io.IOException e) {
+            System.err.println("Error al leer la configuración: " + e.getMessage());
         }
 
         return config;

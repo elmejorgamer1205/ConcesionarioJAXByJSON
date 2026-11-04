@@ -13,7 +13,6 @@ public class JAXBUtil {
     public static Concesionario cargarXML(File archivoXML) throws JAXBException {
         JAXBContext context = JAXBContext.newInstance(Concesionario.class);
         Unmarshaller unmarshaller = context.createUnmarshaller();
-        unmarshaller.unmarshal(archivoXML);
         return (Concesionario) unmarshaller.unmarshal(archivoXML);
     }
 
