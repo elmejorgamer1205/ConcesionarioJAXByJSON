@@ -3,8 +3,10 @@ package utils;
 import java.io.FileInputStream;
 import java.util.Properties;
 
+/** Carga las rutas y opciones definidas en el fichero config.properties. */
 public class PropertiesReader {
 
+    /** Lee la configuración del proyecto; informa por consola si no puede abrirse. */
     public static Properties cargarConfiguracion(){
 
         Properties config = new Properties();
