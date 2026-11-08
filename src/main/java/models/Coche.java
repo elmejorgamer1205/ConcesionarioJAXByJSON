@@ -5,7 +5,6 @@ import jakarta.xml.bind.annotation.*;
 
 import java.util.List;
 
-/** Representa un coche y sus datos mapeados al XML del concesionario. */
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Coche {
     @XmlElement(name = "matricula-coche")
@@ -20,7 +19,6 @@ public class Coche {
     @XmlElement(name = "extra")
     private List<Equipamiento> extras;
 
-    /** Crea un coche con todos sus datos. */
     public Coche(String matricula, String marca, String modelo, List<Equipamiento> extras) throws CocheException {
         setMatricula(matricula);
         this.marca = marca;
@@ -29,11 +27,9 @@ public class Coche {
         this.id = idTotal++;
     }
 
-    /** Constructor vacío requerido por JAXB y Jackson. */
     public Coche() {
     }
 
-    /** Devuelve la matrícula, clave del coche en el concesionario. */
     public String getMatricula() {
         return matricula;
     }
@@ -60,42 +56,34 @@ public class Coche {
         }
     }
 
-    /** Devuelve la marca del coche. */
     public String getMarca() {
         return marca;
     }
 
-    /** Asigna la marca del coche. */
     public void setMarca(String marca) {
         this.marca = marca;
     }
 
-    /** Devuelve el modelo del coche. */
     public String getModelo() {
         return modelo;
     }
 
-    /** Asigna el modelo del coche. */
     public void setModelo(String modelo) {
         this.modelo = modelo;
     }
 
-    /** Devuelve la lista de extras del coche. */
     public List<Equipamiento> getExtras() {
         return extras;
     }
 
-    /** Sustituye la lista de extras del coche. */
     public void setExtras(List<Equipamiento> extras) {
         this.extras = extras;
     }
 
-    /** Devuelve el identificador interno del coche. */
     public int getId() {
         return id;
     }
 
-    /** Actualiza el identificador interno del vehículo. */
     public void setId(int id) {
         this.id = id;
     }

@@ -8,7 +8,6 @@ import models.Concesionario;
 
 import java.io.File;
 
-/** Funciones auxiliares para leer y escribir el modelo del concesionario en XML. */
 public class JAXBUtil {
 
     /**

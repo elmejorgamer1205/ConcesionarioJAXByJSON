@@ -21,8 +21,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-
-/** Gestiona las operaciones del concesionario y la persistencia en XML y JSON. */
 public class GestorConcesionario {
     private Concesionario concesionario;
     private Path ruta;

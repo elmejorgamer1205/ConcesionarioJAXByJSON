@@ -14,10 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 import java.util.Scanner;
-
-/** Punto de entrada de la aplicación del concesionario. */
 public class Main {
-    /** Evita crear instancias: todos los métodos de la clase son estáticos. */
     private Main() { }
 
     /**
@@ -38,11 +35,6 @@ public class Main {
         }
     }
 
-    /**
-     * Muestra las opciones disponibles y delega cada operación al gestor.
-     * @param gestor acceso a la base de datos y a las operaciones del concesionario
-     * @param propiedades rutas configuradas para las importaciones y exportaciones
-     */
     private static void ejecutarMenu(GestorConcesionario gestor, Properties propiedades) {
         try (Scanner scanner = new Scanner(System.in)) {
             int opcion;
